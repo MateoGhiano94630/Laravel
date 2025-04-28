@@ -1,2 +1,5 @@
 <!-- comando para prender el servidor  -->
-PHP ARTISAN SERVE 
+PHP ARTISAN SERVE
+
+<!-- Para acomodar y tabular   -->
+SHIFT + ALT + F 
