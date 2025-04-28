@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Auth;
@@ -26,12 +28,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/contact', fn () => Response::view('contact'));
-
-Route::post('/contact', function(Request $request){
-    $data = $request->all();
-    
-    DB::statement("INSERT INTO contacts (name, phone_number) VALUES(?,?)", [$data["name"], $data["phone_number"]]);
-
-    return "Contact stored";
-});
+Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
+Route::post('/contacts/', [ContactController::class, 'store'])->name('contacts.store');
